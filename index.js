@@ -13,7 +13,7 @@ app.get('/', (req,res) => {
 )
 
 
-
+// create a new student
 app.post("/student", (req, res) => {
   const {
     id = Date.now(),
@@ -48,11 +48,15 @@ app.post("/student", (req, res) => {
   });
 });
 
+// get all students
+
 app.get("/students", (req, res) => {
   res.json({
     students,
   });
 });
+
+// get a single student by id
 
 app.get("/student/:id", (req, res) => {
   const { id } = req.params;
@@ -68,6 +72,8 @@ app.get("/student/:id", (req, res) => {
     student,
   });
 });
+
+// update a student by id
 
 app.put("/student/:id", (req, res) => {
   const { id } = req.params;
@@ -95,6 +101,9 @@ console.log(students[studentIndex]);
   });
 });
 
+// delete a student by id
+
+
 app.delete("/student/:id", (req, res) => {
   const { id } = req.params;
   const studentIndex = students.findIndex((student) => student.id == id);
@@ -111,6 +120,7 @@ app.delete("/student/:id", (req, res) => {
     message: "Student deleted successfully",
   });
 });
+
 
 
 app.listen(4300, () => {
